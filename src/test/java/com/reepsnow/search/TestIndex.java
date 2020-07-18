@@ -39,6 +39,8 @@ public class TestIndex {
 
     @Autowired
     RestClient restClient;
+    @Autowired
+    ContentService contentService;
 
     //创建索引库
     @Test
@@ -125,5 +127,10 @@ public class TestIndex {
         //得到文档的内容
         Map<String, Object> sourceAsMap = getResponse.getSourceAsMap();
         System.out.println(sourceAsMap);
+    }
+
+    @Test
+    public void testAdd() throws IOException {
+        contentService.dbAdd("haha");
     }
 }
