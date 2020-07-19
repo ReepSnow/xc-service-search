@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.elasticsearch.action.DocWriteResponse;
 import org.elasticsearch.action.get.GetRequest;
@@ -41,8 +42,6 @@ public class TestContentIndex {
     @Autowired
     RestHighLevelClient client;
 
-    @Autowired
-    RestClient restClient;
 
 
     //添加文档
@@ -51,7 +50,7 @@ public class TestContentIndex {
         //文档内容
         //准备json数据
         Map<String, Object> jsonMap = new HashMap<>();
-        jsonMap.put("activityId", 111);
+        jsonMap.put("activityId", 222);
         jsonMap.put("endDate", new Date().getTime());
         jsonMap.put("pid", 111);
         List<Long> arr = new ArrayList<>();
@@ -61,7 +60,7 @@ public class TestContentIndex {
 
 
         //创建索引创建对象
-        IndexRequest indexRequest = new IndexRequest("content","buyerShow");
+        IndexRequest indexRequest = new IndexRequest("content","buyerShow",UUID.randomUUID().toString()+"_11");
         //文档内容
         indexRequest.source(jsonMap);
         //通过client进行http的请求

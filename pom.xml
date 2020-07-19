@@ -25,14 +25,20 @@
     <dependency>
       <groupId>org.elasticsearch.client</groupId>
       <artifactId>elasticsearch-rest-high-level-client</artifactId>
-      <version>6.2.1</version>
+      <version>6.4.3</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>elasticsearch</artifactId>
+          <groupId>org.elasticsearch</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
 
     <dependency>
       <groupId>org.elasticsearch</groupId>
       <artifactId>elasticsearch</artifactId>
-      <version>6.2.1</version>
+      <version>6.4.3</version>
       <exclusions>
         <exclusion>
           <artifactId>snakeyaml</artifactId>

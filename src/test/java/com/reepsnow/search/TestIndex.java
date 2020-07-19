@@ -2,6 +2,7 @@ package com.reepsnow.search;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +27,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.reepsnow.search.service.ContentDbService;
+import com.reepsnow.search.service.info.CreateOrUpdateContentInfo;
+
 /**
  * @author Administrator
  * @version 1.0
@@ -40,7 +44,7 @@ public class TestIndex {
     @Autowired
     RestClient restClient;
     @Autowired
-    ContentService contentService;
+    ContentDbService contentDbService;
 
     //创建索引库
     @Test
@@ -131,6 +135,11 @@ public class TestIndex {
 
     @Test
     public void testAdd() throws IOException {
-        contentService.dbAdd("haha");
+      CreateOrUpdateContentInfo createOrUpdateContentInfo = new CreateOrUpdateContentInfo();
+      createOrUpdateContentInfo.setActivityId(122345L);
+      createOrUpdateContentInfo.setEndDate(System.currentTimeMillis());
+      createOrUpdateContentInfo.setGoodsIds(Arrays.asList(1L,2L,4L));
+      createOrUpdateContentInfo.setPid(11L);
+      contentDbService.dbAdd(createOrUpdateContentInfo);
     }
 }
